@@ -57,7 +57,8 @@ export const profileData = {
             achievements: [
                 "Desarrollo de aplicaciones para puntos de venta (POS)",
                 "Integración con sistemas transaccionales de Credicard y Banesco",
-                "Implementación de protocolos de seguridad financiera"
+                "Implementación de protocolos de seguridad financiera (KMM, UKMM)",
+                "Procesos de certificación protocolos EMV y FIME contact y contactless"
             ]
         }
     ],

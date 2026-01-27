@@ -23,47 +23,69 @@ const Hero = () => {
                 <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="relative z-10 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                        <span className="gradient-text">{profileData.title}</span>
-                    </h1>
-                </motion.div>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="text-xl md:text-2xl text-slate-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-                >
-                    {profileData.subtitle}
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                    className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                >
-                    <Button
-                        variant="primary"
-                        onClick={() => scrollToSection('experiencia')}
+            <div className="relative z-10 w-full max-w-7xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    {/* Left side - Profile photo */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="flex justify-center md:justify-start order-2 md:order-1"
                     >
-                        Ver Trayectoria
-                        <ArrowRight size={20} />
-                    </Button>
-                    <Button
-                        variant="secondary"
-                        onClick={() => scrollToSection('contacto')}
+                        <div className="relative">
+                            {/* Glow effect behind photo */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-3xl opacity-30 scale-110"></div>
+
+                            {/* Profile photo */}
+                            <img
+                                src="/profile-hero.jpg"
+                                alt="Abraham Blanco"
+                                className="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl shadow-2xl"
+                            />
+                        </div>
+                    </motion.div>
+
+                    {/* Right side - Text content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                        className="order-1 md:order-2"
                     >
-                        <Mail size={20} />
-                        Contactar
-                    </Button>
-                </motion.div>
+                        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                            Hola, soy <span className="gradient-text">Abraham Blanco</span>
+                        </h1>
+
+                        <p className="text-xl md:text-2xl text-slate-200 mb-6 leading-relaxed">
+                            Me presento, soy un profesional dedicado al mundo de la tecnología, apasionado por crear soluciones innovadoras que transforman negocios y mejoran la vida de las personas.
+                        </p>
+
+                        <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-slate-200">
+                            {profileData.title}
+                        </h2>
+
+                        <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
+                            {profileData.subtitle}
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <Button
+                                variant="primary"
+                                onClick={() => scrollToSection('experiencia')}
+                            >
+                                Ver Trayectoria
+                                <ArrowRight size={20} />
+                            </Button>
+                            <Button
+                                variant="secondary"
+                                onClick={() => scrollToSection('contacto')}
+                            >
+                                <Mail size={20} />
+                                Contactar
+                            </Button>
+                        </div>
+                    </motion.div>
+                </div>
 
                 {/* Scroll indicator */}
                 <motion.div
