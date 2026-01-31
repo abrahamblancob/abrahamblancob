@@ -71,6 +71,42 @@ Si no tienes Node.js instalado:
 - `npm run build` - Crea el build de producción
 - `npm run preview` - Previsualiza el build de producción
 
+## 🌐 Despliegue en GitHub Pages
+
+Este proyecto está configurado para desplegarse automáticamente en GitHub Pages.
+
+### Configuración Inicial
+
+1. **Habilitar GitHub Pages en tu repositorio:**
+   - Ve a Settings → Pages
+   - En "Source", selecciona "GitHub Actions"
+
+2. **Hacer push de los cambios:**
+   ```bash
+   git add .
+   git commit -m "Configure GitHub Pages deployment"
+   git push origin main
+   ```
+
+3. **El despliegue se ejecutará automáticamente:**
+   - Ve a la pestaña "Actions" en tu repositorio
+   - Verás el workflow "Deploy to GitHub Pages" ejecutándose
+   - Una vez completado, tu sitio estará disponible en: `https://abrahamblancob.github.io/abrahamblancob/`
+
+### Despliegue Manual
+
+Si necesitas desplegar manualmente:
+
+```bash
+npm run build
+```
+
+Luego sube la carpeta `dist` a la rama `gh-pages` o usa el workflow de GitHub Actions.
+
+### Actualizar el Sitio
+
+Cada vez que hagas push a la rama `main`, el sitio se actualizará automáticamente.
+
 ## 🎨 Personalización
 
 ### Actualizar Información Personal
