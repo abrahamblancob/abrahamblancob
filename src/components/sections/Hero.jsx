@@ -5,6 +5,7 @@ import Section from '../common/Section';
 import ParticlesBackground from '../common/ParticlesBackground';
 import { profileData } from '../../constants/profile';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
+import profileImage from '/profile-hero-hq.jpg';
 
 /**
  * Hero section component
@@ -43,7 +44,7 @@ const Hero = () => {
 
                             {/* Profile photo */}
                             <img
-                                src="/profile-hero-hq.jpg"
+                                src={profileImage}
                                 alt="Abraham Blanco"
                                 className="relative w-80 h-[28rem] md:w-96 md:h-[32rem] object-cover rounded-2xl shadow-2xl"
                             />
