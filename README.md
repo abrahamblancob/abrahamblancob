@@ -73,25 +73,58 @@ Si no tienes Node.js instalado:
 
 ## 🌐 Despliegue en GitHub Pages
 
-Este proyecto está configurado para desplegarse automáticamente en GitHub Pages.
+Este proyecto está configurado para desplegarse automáticamente en GitHub Pages con dominio personalizado.
 
 ### Configuración Inicial
 
 1. **Habilitar GitHub Pages en tu repositorio:**
    - Ve a Settings → Pages
    - En "Source", selecciona "GitHub Actions"
+   - En "Custom domain", ingresa: `www.abrahamblancob.com`
+   - Marca "Enforce HTTPS"
 
-2. **Hacer push de los cambios:**
+2. **Configurar DNS en GoDaddy:**
+   - Ve a tu panel de GoDaddy → DNS Management
+   - Agrega los siguientes registros:
+   
+   **Registro A (para dominio raíz):**
+   ```
+   Type: A
+   Name: @
+   Value: 185.199.108.153
+   Value: 185.199.109.153
+   Value: 185.199.110.153
+   Value: 185.199.111.153
+   TTL: 600
+   ```
+   
+   **Registro CNAME (para www):**
+   ```
+   Type: CNAME
+   Name: www
+   Value: abrahamblancob.github.io
+   TTL: 1 Hour
+   ```
+
+3. **Hacer push de los cambios:**
    ```bash
    git add .
-   git commit -m "Configure GitHub Pages deployment"
+   git commit -m "Configure custom domain for GitHub Pages"
    git push origin main
    ```
 
-3. **El despliegue se ejecutará automáticamente:**
+4. **El despliegue se ejecutará automáticamente:**
    - Ve a la pestaña "Actions" en tu repositorio
    - Verás el workflow "Deploy to GitHub Pages" ejecutándose
-   - Una vez completado, tu sitio estará disponible en: `https://abrahamblancob.github.io/abrahamblancob/`
+   - Una vez completado, tu sitio estará disponible en: `https://www.abrahamblancob.com`
+
+### Verificar DNS
+
+Espera 24-48 horas para que los cambios DNS se propaguen completamente. Puedes verificar con:
+
+```bash
+nslookup abrahamblancob.com
+```
 
 ### Despliegue Manual
 
