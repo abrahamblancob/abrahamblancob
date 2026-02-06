@@ -57,7 +57,8 @@ export const animationVariants = {
 };
 
 export const navItems = [
-    { id: "experiencia", label: "Experiencia" },
-    { id: "habilidades", label: "Habilidades" },
-    { id: "contacto", label: "Contacto" }
+    { id: "experiencia", label: "Experiencia", type: "scroll" },
+    { id: "habilidades", label: "Habilidades", type: "scroll" },
+    { id: "portfolio", label: "Portfolio", type: "route", path: "/portfolio" },
+    { id: "contacto", label: "Contacto", type: "scroll" }
 ];

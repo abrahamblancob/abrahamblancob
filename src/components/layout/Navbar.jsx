@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 import { navItems } from '../../constants/theme';
@@ -6,12 +7,14 @@ import { profileData } from '../../constants/profile';
 
 /**
  * Navigation bar component
- * Handles navigation UI and smooth scrolling
+ * Handles navigation UI, smooth scrolling, and route navigation
  */
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const scrollToSection = useSmoothScroll();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,9 +24,37 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const handleNavClick = (sectionId) => {
-        scrollToSection(sectionId);
+    const handleNavClick = (item) => {
         setIsMobileMenuOpen(false);
+
+        if (item.type === 'route') {
+            navigate(item.path);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            // If we're not on the landing page, navigate there first
+            if (location.pathname !== '/') {
+                navigate('/');
+                // Wait for navigation, then scroll
+                setTimeout(() => scrollToSection(item.id), 100);
+            } else {
+                scrollToSection(item.id);
+            }
+        }
+    };
+
+    const handleLogoClick = () => {
+        if (location.pathname !== '/') {
+            navigate('/');
+        } else {
+            scrollToSection('hero');
+        }
+    };
+
+    const isActive = (item) => {
+        if (item.type === 'route') {
+            return location.pathname === item.path;
+        }
+        return false;
     };
 
     return (
@@ -34,7 +65,7 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
                 {/* Logo */}
                 <button
-                    onClick={() => scrollToSection('hero')}
+                    onClick={handleLogoClick}
                     className="text-2xl font-bold gradient-text hover:scale-105 transition-transform"
                 >
                     {profileData.logo}
@@ -45,11 +76,11 @@ const Navbar = () => {
                     {navItems.map((item) => (
                         <button
                             key={item.id}
-                            onClick={() => handleNavClick(item.id)}
-                            className="text-slate-300 hover:text-white transition-colors relative group"
+                            onClick={() => handleNavClick(item)}
+                            className={`text-slate-300 hover:text-white transition-colors relative group ${isActive(item) ? 'text-white' : ''}`}
                         >
                             {item.label}
-                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
+                            <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${isActive(item) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                         </button>
                     ))}
                 </div>
@@ -69,8 +100,8 @@ const Navbar = () => {
                     {navItems.map((item) => (
                         <button
                             key={item.id}
-                            onClick={() => handleNavClick(item.id)}
-                            className="block w-full text-left py-3 text-slate-300 hover:text-white transition-colors"
+                            onClick={() => handleNavClick(item)}
+                            className={`block w-full text-left py-3 text-slate-300 hover:text-white transition-colors ${isActive(item) ? 'text-white' : ''}`}
                         >
                             {item.label}
                         </button>

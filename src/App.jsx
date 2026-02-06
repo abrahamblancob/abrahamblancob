@@ -1,26 +1,22 @@
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import Hero from './components/sections/Hero';
-import CVDownload from './components/sections/CVDownload';
-import About from './components/sections/About';
-import Experience from './components/sections/Experience';
-import TechStack from './components/sections/TechStack';
-import Contact from './components/sections/Contact';
+import LandingPage from './pages/LandingPage';
+import PortfolioPage from './pages/PortfolioPage';
 
 /**
  * Main App component
- * Composes all sections - follows composition pattern
+ * Handles routing and layout composition
  */
 function App() {
     return (
         <div className="min-h-screen bg-slate-900">
             <Navbar />
             <main>
-                <Hero />
-                <About />
-                <Experience />
-                <TechStack />
-                <Contact />
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/portfolio" element={<PortfolioPage />} />
+                </Routes>
             </main>
             <Footer />
         </div>

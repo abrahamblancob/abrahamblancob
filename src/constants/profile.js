@@ -85,6 +85,18 @@ export const profileData = {
         ]
     },
 
+    projects: [
+        {
+            id: 1,
+            title: "Wabyte",
+            description: "Plataforma tecnológica enfocada en soluciones digitales innovadoras. Desarrollo integral de producto digital con arquitectura moderna y escalable.",
+            url: "https://www.wabyte.net",
+            image: "/wabyte-logo.png",
+            tags: ["Plataforma Digital", "SaaS", "Cloud"],
+            color: "from-blue-500 to-cyan-500"
+        }
+    ],
+
     contact: {
         email: "abrahamblancob@gmail.com",
         linkedin: "https://www.linkedin.com/in/abraham-blanco-791146b6/",
