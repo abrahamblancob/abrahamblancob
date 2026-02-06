@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Section from '../components/common/Section';
@@ -10,8 +11,63 @@ import { profileData } from '../constants/profile';
  * Portfolio page - Displays projects
  */
 const PortfolioPage = () => {
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://www.abrahamblancob.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Portfolio",
+                "item": "https://www.abrahamblancob.com/portfolio"
+            }
+        ]
+    };
+
+    const projectsJsonLd = profileData.projects.map((project) => ({
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": project.title,
+        "description": project.description,
+        "url": project.url,
+        "author": {
+            "@type": "Person",
+            "name": "Abraham Blanco",
+            "url": "https://www.abrahamblancob.com"
+        },
+        "keywords": project.tags.join(", ")
+    }));
+
     return (
         <>
+            <Helmet>
+                <title>Portfolio - Abraham Blanco | Proyectos Tecnológicos</title>
+                <meta name="description" content="Portfolio de Abraham Blanco - Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria." />
+                <link rel="canonical" href="https://www.abrahamblancob.com/portfolio" />
+
+                <meta property="og:title" content="Portfolio - Abraham Blanco | Proyectos Tecnológicos" />
+                <meta property="og:description" content="Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria." />
+                <meta property="og:url" content="https://www.abrahamblancob.com/portfolio" />
+                <meta property="og:image" content="https://www.abrahamblancob.com/profile-hero-hq.jpg" />
+
+                <meta name="twitter:title" content="Portfolio - Abraham Blanco | Proyectos Tecnológicos" />
+                <meta name="twitter:description" content="Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria." />
+                <meta name="twitter:image" content="https://www.abrahamblancob.com/profile-hero-hq.jpg" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbJsonLd)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(projectsJsonLd)}
+                </script>
+            </Helmet>
+
             {/* Hero section */}
             <Section
                 id="portfolio-hero"
