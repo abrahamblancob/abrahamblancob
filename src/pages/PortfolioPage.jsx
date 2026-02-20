@@ -5,12 +5,16 @@ import Section from '../components/common/Section';
 import AnimatedElement from '../components/common/AnimatedElement';
 import Card from '../components/common/Card';
 import ParticlesBackground from '../components/common/ParticlesBackground';
-import { profileData } from '../constants/profile';
+import { useLanguage } from '../context/LanguageContext';
+import { useProfile } from '../hooks/useProfile';
 
 /**
  * Portfolio page - Displays projects
  */
 const PortfolioPage = () => {
+    const { language, t } = useLanguage();
+    const profile = useProfile();
+
     const breadcrumbJsonLd = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -18,7 +22,7 @@ const PortfolioPage = () => {
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Inicio",
+                "name": t('seo.landing.breadcrumb_home'),
                 "item": "https://www.abrahamblancob.com/"
             },
             {
@@ -30,7 +34,7 @@ const PortfolioPage = () => {
         ]
     };
 
-    const projectsJsonLd = profileData.projects.map((project) => ({
+    const projectsJsonLd = profile.projects.map((project) => ({
         "@context": "https://schema.org",
         "@type": "CreativeWork",
         "name": project.title,
@@ -47,17 +51,19 @@ const PortfolioPage = () => {
     return (
         <>
             <Helmet>
-                <title>Portfolio - Abraham Blanco | Proyectos Tecnológicos</title>
-                <meta name="description" content="Portfolio de Abraham Blanco - Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria." />
+                <html lang={language} />
+                <title>{t('seo.portfolio.title')}</title>
+                <meta name="description" content={t('seo.portfolio.description')} />
                 <link rel="canonical" href="https://www.abrahamblancob.com/portfolio" />
 
-                <meta property="og:title" content="Portfolio - Abraham Blanco | Proyectos Tecnológicos" />
-                <meta property="og:description" content="Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria." />
+                <meta property="og:title" content={t('seo.portfolio.title')} />
+                <meta property="og:description" content={t('seo.portfolio.og_description')} />
                 <meta property="og:url" content="https://www.abrahamblancob.com/portfolio" />
                 <meta property="og:image" content="https://www.abrahamblancob.com/profile-hero-hq.jpg" />
+                <meta property="og:locale" content={language === 'es' ? 'es_ES' : 'en_US'} />
 
-                <meta name="twitter:title" content="Portfolio - Abraham Blanco | Proyectos Tecnológicos" />
-                <meta name="twitter:description" content="Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria." />
+                <meta name="twitter:title" content={t('seo.portfolio.title')} />
+                <meta name="twitter:description" content={t('seo.portfolio.og_description')} />
                 <meta name="twitter:image" content="https://www.abrahamblancob.com/profile-hero-hq.jpg" />
 
                 <script type="application/ld+json">
@@ -82,10 +88,10 @@ const PortfolioPage = () => {
                 <div className="relative z-10 text-center">
                     <AnimatedElement variant="slideUp">
                         <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                            Mi <span className="gradient-text">Portfolio</span>
+                            {t('portfolio.title_prefix')} <span className="gradient-text">{t('portfolio.title_highlight')}</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                            Proyectos en los que he trabajado, combinando tecnología de vanguardia con soluciones de negocio reales.
+                            {t('portfolio.subtitle')}
                         </p>
                     </AnimatedElement>
                 </div>
@@ -94,7 +100,7 @@ const PortfolioPage = () => {
             {/* Projects grid */}
             <Section id="proyectos" className="bg-slate-900/50">
                 <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    {profileData.projects.map((project, index) => (
+                    {profile.projects.map((project, index) => (
                         <AnimatedElement
                             key={project.id}
                             variant="scaleIn"
@@ -145,7 +151,7 @@ const PortfolioPage = () => {
                                     whileTap={{ scale: 0.97 }}
                                     className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-primary to-accent text-white hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 w-fit"
                                 >
-                                    Visitar Proyecto
+                                    {t('portfolio.visit_project')}
                                     <ExternalLink size={18} />
                                 </motion.a>
                                 </div>

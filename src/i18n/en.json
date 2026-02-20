@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "experiencia": "Experience",
+    "habilidades": "Skills",
+    "portfolio": "Portfolio",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "intro": "I'm a technology professional passionate about creating innovative solutions that transform businesses and improve people's lives.",
+    "cta_trajectory": "View Career",
+    "cta_contact": "Get in Touch"
+  },
+  "about": {
+    "title_prefix": "About",
+    "title_highlight": "Me"
+  },
+  "experience": {
+    "title_prefix": "Professional",
+    "title_highlight": "Experience"
+  },
+  "techStack": {
+    "title_prefix": "Tech",
+    "title_highlight": "Stack",
+    "categories": {
+      "infrastructure": "Infrastructure",
+      "architecture": "Architecture",
+      "fintech": "FinTech",
+      "languages": "Languages"
+    }
+  },
+  "contact": {
+    "title_prefix": "Let's Talk About Your",
+    "title_highlight": "Project",
+    "description": "Have a project in mind or need technology consulting? I'm available to collaborate on digital transformation initiatives.",
+    "cv_title": "Download My Resume",
+    "cv_description": "Get a complete copy of my professional experience and technical skills",
+    "cv_spanish": "Resume in Spanish",
+    "cv_english": "Resume in English",
+    "cv_format": "PDF Format • Updated January 2026"
+  },
+  "portfolio": {
+    "title_prefix": "My",
+    "title_highlight": "Portfolio",
+    "subtitle": "Projects I've worked on, combining cutting-edge technology with real business solutions.",
+    "visit_project": "Visit Project"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "seo": {
+    "landing": {
+      "title": "Abraham Blanco - Technology Leadership & Digital Transformation",
+      "description": "Abraham Blanco - Technology Leadership & Digital Transformation. Over 10 years combining business vision with advanced software architecture. Specialist in Cloud, FinTech and Scalability.",
+      "og_description": "Over 10 years combining business vision with advanced software architecture. Specialist in Cloud, FinTech and Scalability.",
+      "breadcrumb_home": "Home"
+    },
+    "portfolio": {
+      "title": "Portfolio - Abraham Blanco | Technology Projects",
+      "description": "Abraham Blanco's Portfolio - Technology projects in Cloud, SaaS and innovative digital solutions. Discover my work and career.",
+      "og_description": "Technology projects in Cloud, SaaS and innovative digital solutions. Discover my work and career."
+    }
+  }
+}

@@ -5,7 +5,8 @@ import {
 import { motion } from 'framer-motion';
 import Section from '../common/Section';
 import AnimatedElement from '../common/AnimatedElement';
-import { profileData } from '../../constants/profile';
+import { useLanguage } from '../../context/LanguageContext';
+import { useProfile } from '../../hooks/useProfile';
 import GoogleCloudLogo from '../common/logos/GoogleCloudLogo';
 import FirebaseLogo from '../common/logos/FirebaseLogo';
 import PythonLogo from '../common/logos/PythonLogo';
@@ -34,18 +35,21 @@ const iconMap = {
  * Displays technology categories with icons
  */
 const TechStack = () => {
+    const { t } = useLanguage();
+    const profile = useProfile();
+
     const categories = [
-        { title: "Infraestructura", items: profileData.techStack.infrastructure, color: "from-blue-500 to-cyan-500" },
-        { title: "Arquitectura", items: profileData.techStack.architecture, color: "from-purple-500 to-pink-500" },
-        { title: "FinTech", items: profileData.techStack.fintech, color: "from-green-500 to-emerald-500" },
-        { title: "Lenguajes", items: profileData.techStack.languages, color: "from-orange-500 to-red-500" },
+        { title: t('techStack.categories.infrastructure'), items: profile.techStack.infrastructure, color: "from-blue-500 to-cyan-500" },
+        { title: t('techStack.categories.architecture'), items: profile.techStack.architecture, color: "from-purple-500 to-pink-500" },
+        { title: t('techStack.categories.fintech'), items: profile.techStack.fintech, color: "from-green-500 to-emerald-500" },
+        { title: t('techStack.categories.languages'), items: profile.techStack.languages, color: "from-orange-500 to-red-500" },
     ];
 
     return (
         <Section id="habilidades" className="bg-slate-900/50">
             <AnimatedElement variant="slideUp">
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-                    Stack <span className="gradient-text">Tecnológico</span>
+                    {t('techStack.title_prefix')} <span className="gradient-text">{t('techStack.title_highlight')}</span>
                 </h2>
             </AnimatedElement>
 

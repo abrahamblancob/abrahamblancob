@@ -3,11 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 import { navItems } from '../../constants/theme';
-import { profileData } from '../../constants/profile';
+import { useLanguage } from '../../context/LanguageContext';
+import { useProfile } from '../../hooks/useProfile';
 
 /**
  * Navigation bar component
- * Handles navigation UI, smooth scrolling, and route navigation
+ * Handles navigation UI, smooth scrolling, route navigation and language toggle
  */
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -15,6 +16,8 @@ const Navbar = () => {
     const scrollToSection = useSmoothScroll();
     const navigate = useNavigate();
     const location = useLocation();
+    const { language, toggleLanguage, t } = useLanguage();
+    const profile = useProfile();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,10 +34,8 @@ const Navbar = () => {
             navigate(item.path);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-            // If we're not on the landing page, navigate there first
             if (location.pathname !== '/') {
                 navigate('/');
-                // Wait for navigation, then scroll
                 setTimeout(() => scrollToSection(item.id), 100);
             } else {
                 scrollToSection(item.id);
@@ -68,7 +69,7 @@ const Navbar = () => {
                     onClick={handleLogoClick}
                     className="text-2xl font-bold gradient-text hover:scale-105 transition-transform"
                 >
-                    {profileData.logo}
+                    {profile.logo}
                 </button>
 
                 {/* Desktop Navigation */}
@@ -79,10 +80,20 @@ const Navbar = () => {
                             onClick={() => handleNavClick(item)}
                             className={`text-slate-300 hover:text-white transition-colors relative group ${isActive(item) ? 'text-white' : ''}`}
                         >
-                            {item.label}
+                            {t(item.labelKey)}
                             <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${isActive(item) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                         </button>
                     ))}
+
+                    {/* Language Toggle */}
+                    <button
+                        onClick={toggleLanguage}
+                        className="glass rounded-full px-3 py-1.5 text-sm font-medium flex items-center gap-1 hover:bg-white/20 transition-all"
+                    >
+                        <span className={language === 'es' ? 'text-white' : 'text-slate-500'}>ES</span>
+                        <span className="text-slate-500">/</span>
+                        <span className={language === 'en' ? 'text-white' : 'text-slate-500'}>EN</span>
+                    </button>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -103,9 +114,19 @@ const Navbar = () => {
                             onClick={() => handleNavClick(item)}
                             className={`block w-full text-left py-3 text-slate-300 hover:text-white transition-colors ${isActive(item) ? 'text-white' : ''}`}
                         >
-                            {item.label}
+                            {t(item.labelKey)}
                         </button>
                     ))}
+
+                    {/* Language Toggle - Mobile */}
+                    <button
+                        onClick={toggleLanguage}
+                        className="mt-3 pt-3 border-t border-white/10 w-full flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+                    >
+                        <span className={language === 'es' ? 'text-white font-semibold' : 'text-slate-500'}>ES</span>
+                        <span className="text-slate-500">/</span>
+                        <span className={language === 'en' ? 'text-white font-semibold' : 'text-slate-500'}>EN</span>
+                    </button>
                 </div>
             )}
         </nav>

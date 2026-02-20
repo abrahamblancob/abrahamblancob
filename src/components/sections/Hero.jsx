@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import Button from '../common/Button';
 import Section from '../common/Section';
 import ParticlesBackground from '../common/ParticlesBackground';
-import { profileData } from '../../constants/profile';
+import { useLanguage } from '../../context/LanguageContext';
+import { useProfile } from '../../hooks/useProfile';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 import profileImage from '/profile-hero-hq.jpg';
 
@@ -13,6 +14,8 @@ import profileImage from '/profile-hero-hq.jpg';
  */
 const Hero = () => {
     const scrollToSection = useSmoothScroll();
+    const { t } = useLanguage();
+    const profile = useProfile();
 
     return (
         <Section
@@ -59,19 +62,19 @@ const Hero = () => {
                         className="order-1 md:order-2"
                     >
                         <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                            Hola, soy <span className="gradient-text">Abraham Blanco</span>
+                            {t('hero.greeting')} <span className="gradient-text">Abraham Blanco</span>
                         </h1>
 
                         <p className="text-xl md:text-2xl text-slate-200 mb-6 leading-relaxed">
-                            Me presento, soy un profesional dedicado al mundo de la tecnología, apasionado por crear soluciones innovadoras que transforman negocios y mejoran la vida de las personas.
+                            {t('hero.intro')}
                         </p>
 
                         <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-slate-200">
-                            {profileData.title}
+                            {profile.title}
                         </h2>
 
                         <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
-                            {profileData.subtitle}
+                            {profile.subtitle}
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
@@ -79,7 +82,7 @@ const Hero = () => {
                                 variant="primary"
                                 onClick={() => scrollToSection('experiencia')}
                             >
-                                Ver Trayectoria
+                                {t('hero.cta_trajectory')}
                                 <ArrowRight size={20} />
                             </Button>
                             <Button
@@ -87,7 +90,7 @@ const Hero = () => {
                                 onClick={() => scrollToSection('contacto')}
                             >
                                 <Mail size={20} />
-                                Contactar
+                                {t('hero.cta_contact')}
                             </Button>
                         </div>
                     </motion.div>

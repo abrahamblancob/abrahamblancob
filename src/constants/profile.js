@@ -1,5 +1,6 @@
 // Profile data - Single source of truth for all personal information
-export const profileData = {
+
+const profileDataES = {
     name: "Abraham Blanco",
     logo: "Abraham Blanco",
     title: "Liderazgo Tecnológico & Transformación Digital",
@@ -102,3 +103,110 @@ export const profileData = {
         linkedin: "https://www.linkedin.com/in/abraham-blanco-791146b6/",
     }
 };
+
+const profileDataEN = {
+    name: "Abraham Blanco",
+    logo: "Abraham Blanco",
+    title: "Technology Leadership & Digital Transformation",
+    subtitle: "Over 10 years combining business vision with advanced software architecture. Specialist in Cloud, FinTech and Scalability.",
+
+    about: {
+        summary: "Professional with proven ability to lead cross-functional teams, optimize IT operations, and build scalable digital products. I combine technical vision with a business-focused approach to drive digital transformation in high-growth organizations."
+    },
+
+    experience: [
+        {
+            id: 1,
+            title: "General Manager",
+            company: "Instituto Tecnológico Sitio Uno",
+            period: "2025",
+            description: "Founded the institute and digital marketing strategy.",
+            achievements: [
+                "Successful foundation and launch of the technology institute",
+                "Development and implementation of a comprehensive digital marketing strategy",
+                "Establishment of strategic partnerships with industry companies"
+            ]
+        },
+        {
+            id: 2,
+            title: "CTO (Chief Technology Officer)",
+            company: "Sitio Uno Inc",
+            period: "2022 - 2024",
+            description: "25% reduction in IT operational costs and microservices reengineering.",
+            achievements: [
+                "25% reduction in IT infrastructure operational costs (GCP/Firebase)",
+                "Complete reengineering of microservices architecture",
+                "CI/CD implementation and 60% improvement in deployment time",
+                "Cloud architecture design for multiple mobile applications for international markets on Android and iOS"
+            ]
+        },
+        {
+            id: 3,
+            title: "Senior Developer",
+            company: "Sitio Uno Inc",
+            period: "2018 - 2022",
+            description: "Financial architecture for Credicard with high availability.",
+            achievements: [
+                "Design and implementation of financial architecture for Credicard",
+                "Guaranteed high availability (99.9% uptime)",
+                "Compliance with PCI-DSS and ISO8583 standards",
+                "Development of financial Android applications for Credicard"
+            ]
+        },
+        {
+            id: 4,
+            title: "Junior Developer",
+            company: "Sitio Uno Inc",
+            period: "2015 - 2018",
+            description: "Development of financial applications for point-of-sale terminals at Credicard and Banesco.",
+            achievements: [
+                "Development of point-of-sale (POS) applications",
+                "Integration with Credicard and Banesco transaction systems",
+                "Implementation of financial security protocols (KMM, UKMM)",
+                "EMV and FIME contact and contactless protocol certification processes"
+            ]
+        }
+    ],
+
+    techStack: {
+        infrastructure: [
+            { name: "Google Cloud Platform", icon: "Cloud" },
+            { name: "Firebase", icon: "Flame" },
+        ],
+        architecture: [
+            { name: "Microservices", icon: "Network" },
+            { name: "CI/CD", icon: "GitBranch" },
+            { name: "SaaS", icon: "Server" },
+        ],
+        fintech: [
+            { name: "PCI Standards", icon: "ShieldCheck" },
+            { name: "ISO8583", icon: "FileCode" },
+            { name: "Payment Methods", icon: "CreditCard" },
+        ],
+        languages: [
+            { name: "Python", icon: "Code2" },
+            { name: "Java", icon: "Coffee" },
+            { name: "C", icon: "Terminal" },
+        ]
+    },
+
+    projects: [
+        {
+            id: 1,
+            title: "Wabyte",
+            description: "Technology platform focused on innovative digital solutions. Full digital product development with modern and scalable architecture.",
+            url: "https://www.wabyte.net",
+            image: "/wabyte-logo.png",
+            tags: ["Digital Platform", "SaaS", "Cloud"],
+            color: "from-blue-500 to-cyan-500"
+        }
+    ],
+
+    contact: {
+        email: "abrahamblancob@gmail.com",
+        linkedin: "https://www.linkedin.com/in/abraham-blanco-791146b6/",
+    }
+};
+
+export const profileDataByLang = { es: profileDataES, en: profileDataEN };
+export const profileData = profileDataES;

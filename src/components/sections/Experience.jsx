@@ -2,23 +2,27 @@ import { Briefcase, CheckCircle2 } from 'lucide-react';
 import Section from '../common/Section';
 import Card from '../common/Card';
 import AnimatedElement from '../common/AnimatedElement';
-import { profileData } from '../../constants/profile';
+import { useLanguage } from '../../context/LanguageContext';
+import { useProfile } from '../../hooks/useProfile';
 
 /**
  * Experience timeline component
  * Displays work history in vertical timeline
  */
 const Experience = () => {
+    const { t } = useLanguage();
+    const profile = useProfile();
+
     return (
         <Section id="experiencia">
             <AnimatedElement variant="slideUp">
                 <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-                    Experiencia <span className="gradient-text">Profesional</span>
+                    {t('experience.title_prefix')} <span className="gradient-text">{t('experience.title_highlight')}</span>
                 </h2>
             </AnimatedElement>
 
             <div className="max-w-4xl mx-auto">
-                {profileData.experience.map((job, index) => (
+                {profile.experience.map((job, index) => (
                     <AnimatedElement
                         key={job.id}
                         variant="slideInLeft"
@@ -26,7 +30,7 @@ const Experience = () => {
                     >
                         <div className="relative pl-8 pb-12 last:pb-0">
                             {/* Timeline line */}
-                            {index !== profileData.experience.length - 1 && (
+                            {index !== profile.experience.length - 1 && (
                                 <div className="absolute left-[15px] top-12 bottom-0 w-0.5 bg-gradient-to-b from-primary to-accent"></div>
                             )}
 

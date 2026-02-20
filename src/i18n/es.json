@@ -1,0 +1,64 @@
+{
+  "nav": {
+    "experiencia": "Experiencia",
+    "habilidades": "Habilidades",
+    "portfolio": "Portfolio",
+    "contacto": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "intro": "Me presento, soy un profesional dedicado al mundo de la tecnología, apasionado por crear soluciones innovadoras que transforman negocios y mejoran la vida de las personas.",
+    "cta_trajectory": "Ver Trayectoria",
+    "cta_contact": "Contactar"
+  },
+  "about": {
+    "title_prefix": "Sobre",
+    "title_highlight": "Mí"
+  },
+  "experience": {
+    "title_prefix": "Experiencia",
+    "title_highlight": "Profesional"
+  },
+  "techStack": {
+    "title_prefix": "Stack",
+    "title_highlight": "Tecnológico",
+    "categories": {
+      "infrastructure": "Infraestructura",
+      "architecture": "Arquitectura",
+      "fintech": "FinTech",
+      "languages": "Lenguajes"
+    }
+  },
+  "contact": {
+    "title_prefix": "Hablemos de tu",
+    "title_highlight": "Proyecto",
+    "description": "¿Tienes un proyecto en mente o necesitas asesoría tecnológica? Estoy disponible para colaborar en iniciativas de transformación digital.",
+    "cv_title": "Descarga mi CV",
+    "cv_description": "Obtén una copia completa de mi experiencia profesional y habilidades técnicas",
+    "cv_spanish": "CV en Español",
+    "cv_english": "CV in English",
+    "cv_format": "Formato PDF • Actualizado Enero 2026"
+  },
+  "portfolio": {
+    "title_prefix": "Mi",
+    "title_highlight": "Portfolio",
+    "subtitle": "Proyectos en los que he trabajado, combinando tecnología de vanguardia con soluciones de negocio reales.",
+    "visit_project": "Visitar Proyecto"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  },
+  "seo": {
+    "landing": {
+      "title": "Abraham Blanco - Liderazgo Tecnológico & Transformación Digital",
+      "description": "Abraham Blanco - Liderazgo Tecnológico & Transformación Digital. Más de 10 años combinando visión de negocio con arquitectura de software avanzada. Especialista en Cloud, FinTech y Escalabilidad.",
+      "og_description": "Más de 10 años combinando visión de negocio con arquitectura de software avanzada. Especialista en Cloud, FinTech y Escalabilidad.",
+      "breadcrumb_home": "Inicio"
+    },
+    "portfolio": {
+      "title": "Portfolio - Abraham Blanco | Proyectos Tecnológicos",
+      "description": "Portfolio de Abraham Blanco - Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria.",
+      "og_description": "Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria."
+    }
+  }
+}
