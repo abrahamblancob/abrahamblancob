@@ -60,5 +60,6 @@ export const navItems = [
     { id: "experiencia", labelKey: "nav.experiencia", type: "scroll" },
     { id: "habilidades", labelKey: "nav.habilidades", type: "scroll" },
     { id: "portfolio", labelKey: "nav.portfolio", type: "route", path: "/portfolio" },
+    { id: "blog", labelKey: "nav.blog", type: "route", path: "/blog" },
     { id: "contacto", labelKey: "nav.contacto", type: "scroll" }
 ];

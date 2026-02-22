@@ -3,6 +3,7 @@
     "experiencia": "Experience",
     "habilidades": "Skills",
     "portfolio": "Portfolio",
+    "blog": "Blog",
     "contacto": "Contact"
   },
   "hero": {
@@ -45,6 +46,15 @@
     "subtitle": "Projects I've worked on, combining cutting-edge technology with real business solutions.",
     "visit_project": "Visit Project"
   },
+  "blog": {
+    "title_prefix": "My",
+    "title_highlight": "Blog",
+    "subtitle": "Technical insights and reflections on software architecture, technology and digital transformation.",
+    "read_more": "Read article",
+    "back_to_blog": "Back to Blog",
+    "originally_posted": "Originally posted on LinkedIn",
+    "view_on_linkedin": "View on LinkedIn"
+  },
   "footer": {
     "rights": "All rights reserved."
   },
@@ -59,6 +69,11 @@
       "title": "Portfolio - Abraham Blanco | Technology Projects",
       "description": "Abraham Blanco's Portfolio - Technology projects in Cloud, SaaS and innovative digital solutions. Discover my work and career.",
       "og_description": "Technology projects in Cloud, SaaS and innovative digital solutions. Discover my work and career."
+    },
+    "blog": {
+      "title": "Blog - Abraham Blanco | Architecture & Technology",
+      "description": "Abraham Blanco's Blog - Technical insights and reflections on software architecture, FinTech, Cloud and digital transformation.",
+      "og_description": "Technical insights and reflections on software architecture, FinTech, Cloud and digital transformation."
     }
   }
 }

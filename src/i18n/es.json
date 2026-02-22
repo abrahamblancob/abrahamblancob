@@ -3,6 +3,7 @@
     "experiencia": "Experiencia",
     "habilidades": "Habilidades",
     "portfolio": "Portfolio",
+    "blog": "Blog",
     "contacto": "Contacto"
   },
   "hero": {
@@ -45,6 +46,15 @@
     "subtitle": "Proyectos en los que he trabajado, combinando tecnología de vanguardia con soluciones de negocio reales.",
     "visit_project": "Visitar Proyecto"
   },
+  "blog": {
+    "title_prefix": "Mi",
+    "title_highlight": "Blog",
+    "subtitle": "Reflexiones y análisis técnicos sobre arquitectura de software, tecnología y transformación digital.",
+    "read_more": "Leer artículo",
+    "back_to_blog": "Volver al Blog",
+    "originally_posted": "Publicado originalmente en LinkedIn",
+    "view_on_linkedin": "Ver en LinkedIn"
+  },
   "footer": {
     "rights": "Todos los derechos reservados."
   },
@@ -59,6 +69,11 @@
       "title": "Portfolio - Abraham Blanco | Proyectos Tecnológicos",
       "description": "Portfolio de Abraham Blanco - Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria.",
       "og_description": "Proyectos tecnológicos en Cloud, SaaS y soluciones digitales innovadoras. Conoce mi trabajo y trayectoria."
+    },
+    "blog": {
+      "title": "Blog - Abraham Blanco | Arquitectura & Tecnología",
+      "description": "Blog de Abraham Blanco - Reflexiones y análisis técnicos sobre arquitectura de software, FinTech, Cloud y transformación digital.",
+      "og_description": "Reflexiones y análisis técnicos sobre arquitectura de software, FinTech, Cloud y transformación digital."
     }
   }
 }
