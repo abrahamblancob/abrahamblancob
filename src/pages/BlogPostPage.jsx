@@ -140,6 +140,35 @@ const BlogPostPage = () => {
                                             </h2>
                                         );
                                     }
+                                    if (block.type === 'image') {
+                                        return (
+                                            <div key={index} className="my-8">
+                                                <img
+                                                    src={block.src}
+                                                    alt={block.alt || post.title}
+                                                    className="w-full rounded-lg shadow-lg border border-slate-700"
+                                                    loading="lazy"
+                                                />
+                                                {block.caption && (
+                                                    <p className="text-slate-400 text-sm text-center mt-3 italic">
+                                                        {block.caption}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        );
+                                    }
+                                    if (block.type === 'list') {
+                                        return (
+                                            <ul key={index} className="space-y-3 mb-6">
+                                                {block.items.map((item, i) => (
+                                                    <li key={i} className="flex items-start gap-3 text-slate-300 text-lg">
+                                                        <span className="mt-1.5 flex-shrink-0">{item.icon || '•'}</span>
+                                                        <span><strong className="text-white">{item.title}</strong> {item.text}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        );
+                                    }
                                     return (
                                         <p
                                             key={index}
