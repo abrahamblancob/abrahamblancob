@@ -95,6 +95,24 @@ const profileDataES = {
             image: "/wabyte-logo.png",
             tags: ["Plataforma Digital", "SaaS", "Cloud"],
             color: "from-blue-500 to-cyan-500"
+        },
+        {
+            id: 2,
+            title: "Rhino Toyo Parts",
+            description: "Proveedor líder de repuestos Toyota en Venezuela. Soluciones tecnológicas SaaS: Rhino Vision — herramienta gratuita con IA que identifica repuestos Toyota al instante con solo una foto. Rhino Hub — plataforma B2B donde proveedores suben inventario en CSV/Excel, llegan a miles de compradores, con logística, pagos y auditoría de stock en tiempo real.",
+            url: "https://www.rhinotoyoparts.com",
+            image: "/rhino-logo.png",
+            tags: ["SaaS", "Web + Mobile", "IA", "B2B"],
+            color: "from-red-600 to-red-500"
+        },
+        {
+            id: 3,
+            title: "Picking Brothers",
+            description: "Plataforma SaaS para operaciones logísticas y fulfillment. Aplicación web y móvil multiplataforma con gestión de almacén, recepción, picking inteligente, packing y trazabilidad de pedidos end-to-end.",
+            url: "https://www.pickingbrothers.com",
+            image: "/picking-brothers-logo.png",
+            tags: ["SaaS", "Web + Mobile", "Logística", "WMS"],
+            color: "from-orange-500 to-amber-500"
         }
     ],
 
@@ -199,6 +217,24 @@ const profileDataEN = {
             image: "/wabyte-logo.png",
             tags: ["Digital Platform", "SaaS", "Cloud"],
             color: "from-blue-500 to-cyan-500"
+        },
+        {
+            id: 2,
+            title: "Rhino Toyo Parts",
+            description: "Leading Toyota parts supplier in Venezuela. SaaS technology solutions: Rhino Vision — free AI-powered tool that instantly identifies Toyota parts from a photo. Rhino Hub — B2B platform where suppliers upload inventory via CSV/Excel, reach thousands of buyers, with logistics, payments and real-time stock auditing.",
+            url: "https://www.rhinotoyoparts.com",
+            image: "/rhino-logo.png",
+            tags: ["SaaS", "Web + Mobile", "AI", "B2B"],
+            color: "from-red-600 to-red-500"
+        },
+        {
+            id: 3,
+            title: "Picking Brothers",
+            description: "SaaS platform for logistics and fulfillment operations. Cross-platform web and mobile application with warehouse management, receiving, smart picking, packing and end-to-end order traceability.",
+            url: "https://www.pickingbrothers.com",
+            image: "/picking-brothers-logo.png",
+            tags: ["SaaS", "Web + Mobile", "Logistics", "WMS"],
+            color: "from-orange-500 to-amber-500"
         }
     ],
 
