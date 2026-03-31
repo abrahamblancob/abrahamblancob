@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import PortfolioPage from './pages/PortfolioPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
+import GsapDemoPage from './pages/GsapDemoPage';
 
 /**
  * Main App component
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/portfolio" element={<PortfolioPage />} />
                     <Route path="/blog" element={<BlogPage />} />
                     <Route path="/blog/:slug" element={<BlogPostPage />} />
+                    <Route path="/gsap-demo" element={<GsapDemoPage />} />
                 </Routes>
             </main>
             <Footer />
