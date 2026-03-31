@@ -5,10 +5,20 @@
 @layer base {
   body {
     @apply bg-slate-900 text-slate-100 font-sans antialiased;
+    cursor: none;
   }
 
-  html {
-    scroll-behavior: smooth;
+  /* Lenis smooth scroll */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  /* Show default cursor on touch devices */
+  @media (hover: none) {
+    body { cursor: auto; }
   }
 }
 

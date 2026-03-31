@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Section from '../components/common/Section';
 import AnimatedElement from '../components/common/AnimatedElement';
 import Card from '../components/common/Card';
@@ -8,12 +11,39 @@ import ParticlesBackground from '../components/common/ParticlesBackground';
 import { useLanguage } from '../context/LanguageContext';
 import { useProfile } from '../hooks/useProfile';
 
+gsap.registerPlugin(ScrollTrigger);
+
 /**
  * Portfolio page - Displays projects
  */
 const PortfolioPage = () => {
     const { language, t } = useLanguage();
     const profile = useProfile();
+
+    // Image reveal masks on scroll
+    useEffect(() => {
+        const frameId = requestAnimationFrame(() => {
+            gsap.utils.toArray('.project-img-wrapper').forEach((wrapper) => {
+                gsap.fromTo(wrapper,
+                    { clipPath: 'inset(100% 0 0 0)' },
+                    {
+                        clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'power3.inOut',
+                        scrollTrigger: { trigger: wrapper, start: 'top 85%', toggleActions: 'play none none none' },
+                    }
+                );
+                // Image scale inside wrapper
+                const img = wrapper.querySelector('img');
+                if (img) {
+                    gsap.fromTo(img,
+                        { scale: 1.3 },
+                        { scale: 1, duration: 1.2, ease: 'power2.out',
+                          scrollTrigger: { trigger: wrapper, start: 'top 85%', toggleActions: 'play none none none' } }
+                    );
+                }
+            });
+        });
+        return () => cancelAnimationFrame(frameId);
+    }, []);
 
     const breadcrumbJsonLd = {
         "@context": "https://schema.org",
@@ -109,7 +139,7 @@ const PortfolioPage = () => {
                             <Card className="h-full flex flex-col overflow-hidden p-0">
                                 {/* Project image */}
                                 {project.image && (
-                                    <div className="w-full h-64 bg-slate-800/80 flex items-center justify-center">
+                                    <div className="project-img-wrapper w-full h-64 bg-slate-800/80 flex items-center justify-center overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={project.title}

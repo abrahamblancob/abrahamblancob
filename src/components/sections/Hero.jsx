@@ -2,6 +2,7 @@ import { ArrowRight, Mail } from 'lucide-react';
 import Button from '../common/Button';
 import Section from '../common/Section';
 import ParticlesBackground from '../common/ParticlesBackground';
+import ScrubText from '../common/ScrubText';
 import { useLanguage } from '../../context/LanguageContext';
 import { useProfile } from '../../hooks/useProfile';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
@@ -45,7 +46,7 @@ const Hero = () => {
                         </h1>
 
                         <p className="text-xl md:text-2xl text-slate-200 mb-6 leading-relaxed animate-[fadeUp_0.6s_ease-out_0.7s_both]">
-                            {t('hero.intro')}
+                            <ScrubText>{t('hero.intro')}</ScrubText>
                         </p>
 
                         <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-slate-200 animate-[fadeUp_0.6s_ease-out_0.9s_both]">
