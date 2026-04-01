@@ -4,6 +4,128 @@
 
 const blogPostsES = [
     {
+        id: "idempotencia-apis-financieras-uuids-emv",
+        title: "Idempotencia en APIs financieras: de los UUIDs al chip EMV",
+        excerpt: "Ciclo de vida de la idempotency key, los cuatro escenarios que debes cubrir, el orden de persistencia que más falla en producción y cómo el protocolo EMV resuelve el mismo problema en medios físicos.",
+        date: "2026-03-31",
+        author: "Abraham Blanco",
+        tags: ["FinTech", "APIs", "EMV", "Idempotencia", "Pagos"],
+        linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:share:7444896470819946496",
+        color: "from-emerald-500 to-teal-500",
+        content: [
+            {
+                type: "paragraph",
+                text: "La idempotencia es uno de los conceptos más críticos en sistemas de pago y, al mismo tiempo, uno de los que más se implementa mal en producción. Un cobro duplicado no es solo un bug — es un incidente con impacto real en el usuario y en el negocio."
+            },
+            {
+                type: "image",
+                src: "/blog/idempotencia-apis-financieras.jpg",
+                alt: "Idempotencia en APIs financieras: de los UUIDs al chip EMV",
+                caption: "Ciclo de vida de la idempotency key · cuatro escenarios · orden de persistencia · protocolo EMV"
+            },
+            {
+                type: "heading",
+                text: "El ciclo de vida de la idempotency key"
+            },
+            {
+                type: "paragraph",
+                text: "El flujo es simple en teoría: el cliente genera un UUID v4, lo envía como header Idempotency-Key, el API Gateway lo extrae y consulta un Idempotency Store (Redis o DB) con TTL de 24 horas. Pero la complejidad está en los casos borde."
+            },
+            {
+                type: "heading",
+                text: "Los cuatro escenarios que debes cubrir"
+            },
+            {
+                type: "list",
+                items: [
+                    {
+                        icon: "🟢",
+                        title: "Key nueva:",
+                        text: "persiste PENDING antes de cualquier efecto externo, luego ejecuta el cobro."
+                    },
+                    {
+                        icon: "🟡",
+                        title: "En proceso — retry concurrente:",
+                        text: "la key está bloqueada, responde 409 Conflict. El cliente no debe reintentar hasta recibir respuesta."
+                    },
+                    {
+                        icon: "🔵",
+                        title: "Completada — retry tardío:",
+                        text: "la operación ya existe en el store, devuelve la respuesta cacheada sin re-ejecutar."
+                    },
+                    {
+                        icon: "🔴",
+                        title: "TTL expirado:",
+                        text: "la key no existe en el store, la operación es considerada nueva y se procesa desde cero."
+                    }
+                ]
+            },
+            {
+                type: "heading",
+                text: "El orden de persistencia: el detalle que más falla en producción"
+            },
+            {
+                type: "list",
+                items: [
+                    {
+                        icon: "1️⃣",
+                        title: "Persiste PENDING",
+                        text: "antes de cualquier efecto externo. Este paso es el seguro contra duplicados."
+                    },
+                    {
+                        icon: "2️⃣",
+                        title: "Ejecuta el cobro",
+                        text: "idempotente contra el procesador de pagos."
+                    },
+                    {
+                        icon: "3️⃣",
+                        title: "Actualiza resultado",
+                        text: "estado DONE + respuesta serializada."
+                    }
+                ]
+            },
+            {
+                type: "paragraph",
+                text: "Si el proceso muere entre el paso 2 y el 3, el retry encuentra PENDING y no reejecuta — el estado intermedio te protege. Invertir el orden duplica cobros."
+            },
+            {
+                type: "heading",
+                text: "Cómo resuelve EMV la idempotencia en medios físicos"
+            },
+            {
+                type: "paragraph",
+                text: "El chip no usa UUIDs — usa criptografía de sesión. Cada transacción genera una firma única e irrepetible entre tarjeta, terminal y emisor mediante tres elementos: ATC (Application Transaction Counter, contador en chip que nunca retrocede), ARQC (Authorization Request Cryptogram, firma única f(ATC, UN, monto, clave)) y UN (Unpredictable Number, nonce del terminal de 4 bytes para anti-replay)."
+            },
+            {
+                type: "paragraph",
+                text: "El emisor valida el ARQC con la clave maestra derivada y verifica que el ATC no haya sido usado antes. Un ARQC repetido con el mismo ATC es un intento de replay — hay que rechazarlo en el gateway, antes de llegar al autorizador."
+            },
+            {
+                type: "heading",
+                text: "Dos capas de idempotencia que deben coexistir"
+            },
+            {
+                type: "list",
+                items: [
+                    {
+                        icon: "🔗",
+                        title: "APIs REST:",
+                        text: "idempotency key generada por el cliente, persistida en Redis / DB antes del efecto, TTL 24h con scope por user_id."
+                    },
+                    {
+                        icon: "💳",
+                        title: "Protocolo EMV:",
+                        text: "ARQC único por transacción física, ATC como contador irrepetible en chip, validación en HSM del emisor."
+                    }
+                ]
+            },
+            {
+                type: "paragraph",
+                text: "¿Tu gateway valida el ATC antes de llegar al autorizador? ¿O delegan esa responsabilidad completamente al procesador?"
+            }
+        ]
+    },
+    {
         id: "pci-dss-arquitecturas-cloud-native",
         title: "PCI-DSS en Arquitecturas Cloud-Native: El gap entre teoría y producción",
         excerpt: "Cumplir con PCI-DSS en microservicios distribuidos sobre Kubernetes es complejo si no tienes claro cómo se traducen los requerimientos a decisiones de diseño concretas.",
@@ -154,6 +276,128 @@ const blogPostsES = [
 ];
 
 const blogPostsEN = [
+    {
+        id: "idempotency-financial-apis-uuids-emv",
+        title: "Idempotency in Financial APIs: from UUIDs to the EMV chip",
+        excerpt: "Idempotency key lifecycle, the four scenarios you must cover, the persistence order that most often fails in production, and how the EMV protocol solves the same problem for physical payment methods.",
+        date: "2026-03-31",
+        author: "Abraham Blanco",
+        tags: ["FinTech", "APIs", "EMV", "Idempotency", "Payments"],
+        linkedinUrl: "https://www.linkedin.com/feed/update/urn:li:share:7444896470819946496",
+        color: "from-emerald-500 to-teal-500",
+        content: [
+            {
+                type: "paragraph",
+                text: "Idempotency is one of the most critical concepts in payment systems and, at the same time, one of the most commonly misimplemented in production. A duplicate charge is not just a bug — it's an incident with real impact on users and the business."
+            },
+            {
+                type: "image",
+                src: "/blog/idempotencia-apis-financieras.jpg",
+                alt: "Idempotency in Financial APIs: from UUIDs to the EMV chip",
+                caption: "Idempotency key lifecycle · four scenarios · persistence order · EMV protocol"
+            },
+            {
+                type: "heading",
+                text: "The idempotency key lifecycle"
+            },
+            {
+                type: "paragraph",
+                text: "The flow is simple in theory: the client generates a UUID v4, sends it as an Idempotency-Key header, the API Gateway extracts it and queries an Idempotency Store (Redis or DB) with a 24-hour TTL. But the complexity lies in the edge cases."
+            },
+            {
+                type: "heading",
+                text: "The four scenarios you must cover"
+            },
+            {
+                type: "list",
+                items: [
+                    {
+                        icon: "🟢",
+                        title: "New key:",
+                        text: "persist PENDING before any external effect, then execute the charge."
+                    },
+                    {
+                        icon: "🟡",
+                        title: "In progress — concurrent retry:",
+                        text: "the key is locked, respond 409 Conflict. The client must not retry until a response is received."
+                    },
+                    {
+                        icon: "🔵",
+                        title: "Completed — late retry:",
+                        text: "the operation already exists in the store, return the cached response without re-executing."
+                    },
+                    {
+                        icon: "🔴",
+                        title: "TTL expired:",
+                        text: "the key doesn't exist in the store, the operation is treated as new and processed from scratch."
+                    }
+                ]
+            },
+            {
+                type: "heading",
+                text: "Persistence order: the detail that fails most in production"
+            },
+            {
+                type: "list",
+                items: [
+                    {
+                        icon: "1️⃣",
+                        title: "Persist PENDING",
+                        text: "before any external effect. This step is the insurance against duplicates."
+                    },
+                    {
+                        icon: "2️⃣",
+                        title: "Execute the charge",
+                        text: "idempotent against the payment processor."
+                    },
+                    {
+                        icon: "3️⃣",
+                        title: "Update result",
+                        text: "DONE state + serialized response."
+                    }
+                ]
+            },
+            {
+                type: "paragraph",
+                text: "If the process dies between steps 2 and 3, the retry finds PENDING and won't re-execute — the intermediate state protects you. Reversing the order duplicates charges."
+            },
+            {
+                type: "heading",
+                text: "How EMV solves idempotency for physical payment methods"
+            },
+            {
+                type: "paragraph",
+                text: "The chip doesn't use UUIDs — it uses session cryptography. Each transaction generates a unique, non-repeatable signature between card, terminal, and issuer through three elements: ATC (Application Transaction Counter, an on-chip counter that never decrements), ARQC (Authorization Request Cryptogram, unique signature f(ATC, UN, amount, key)), and UN (Unpredictable Number, a 4-byte terminal nonce for anti-replay)."
+            },
+            {
+                type: "paragraph",
+                text: "The issuer validates the ARQC with the derived master key and verifies that the ATC hasn't been used before. A repeated ARQC with the same ATC is a replay attempt — it must be rejected at the gateway, before reaching the authorizer."
+            },
+            {
+                type: "heading",
+                text: "Two idempotency layers that must coexist"
+            },
+            {
+                type: "list",
+                items: [
+                    {
+                        icon: "🔗",
+                        title: "REST APIs:",
+                        text: "idempotency key generated by the client, persisted in Redis / DB before the effect, 24h TTL scoped by user_id."
+                    },
+                    {
+                        icon: "💳",
+                        title: "EMV Protocol:",
+                        text: "unique ARQC per physical transaction, ATC as an on-chip non-repeatable counter, validation in the issuer's HSM."
+                    }
+                ]
+            },
+            {
+                type: "paragraph",
+                text: "Does your gateway validate the ATC before reaching the authorizer? Or do you fully delegate that responsibility to the processor?"
+            }
+        ]
+    },
     {
         id: "pci-dss-cloud-native-architectures",
         title: "PCI-DSS in Cloud-Native Architectures: The gap between theory and production",
