@@ -119,9 +119,9 @@ const profileDataES = {
             title: "DDDare",
             description: "Plataforma financiera de préstamos de nómina. Desarrollo de sitio web corporativo integrado con aplicación móvil nativa: solicitud de crédito en línea, consulta de estado del préstamo, notificaciones push y gestión del ciclo completo del crédito desde el dispositivo móvil.",
             url: "https://www.dddare.net",
-            image: null,
+            image: "/ddare-logo.png",
             tags: ["FinTech", "Web + Mobile", "Crédito", "Nómina"],
-            color: "from-violet-500 to-purple-600"
+            color: "from-blue-600 to-green-500"
         }
     ],
 
