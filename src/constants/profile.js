@@ -113,6 +113,15 @@ const profileDataES = {
             image: "/picking-brothers-logo.png",
             tags: ["SaaS", "Web + Mobile", "Logística", "WMS"],
             color: "from-orange-500 to-amber-500"
+        },
+        {
+            id: 4,
+            title: "DDDare",
+            description: "Plataforma financiera de préstamos de nómina. Desarrollo de sitio web corporativo integrado con aplicación móvil nativa: solicitud de crédito en línea, consulta de estado del préstamo, notificaciones push y gestión del ciclo completo del crédito desde el dispositivo móvil.",
+            url: "https://www.dddare.net",
+            image: null,
+            tags: ["FinTech", "Web + Mobile", "Crédito", "Nómina"],
+            color: "from-violet-500 to-purple-600"
         }
     ],
 
@@ -235,6 +244,15 @@ const profileDataEN = {
             image: "/picking-brothers-logo.png",
             tags: ["SaaS", "Web + Mobile", "Logistics", "WMS"],
             color: "from-orange-500 to-amber-500"
+        },
+        {
+            id: 4,
+            title: "DDDare",
+            description: "Payroll-based lending platform. Corporate website fully integrated with a native mobile application: online loan requests, loan status tracking, push notifications, and full credit lifecycle management from the user's device.",
+            url: "https://www.dddare.net",
+            image: null,
+            tags: ["FinTech", "Web + Mobile", "Credit", "Payroll"],
+            color: "from-violet-500 to-purple-600"
         }
     ],
 
